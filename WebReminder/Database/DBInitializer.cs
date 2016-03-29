@@ -8,14 +8,16 @@ using WebReminder.Models;
 
 namespace WebReminder.Database
 {
-    public class DBInitializer : DropCreateDatabaseAlways<WR_DBContext>
+    public class DBInitializer : DropCreateDatabaseIfModelChanges<WR_DBContext>
     {
         protected override void Seed(WR_DBContext context)
         {
             User tmpUser = new User()
             {
                 Login = "Jan",
-                Password = "Kowalski"
+                Password = "Kowalski",
+                ConfirmPassword = "Kowalski",
+                Email = "Jan@wp.pl"
             };
 
             Task tmpTask = new Task()
