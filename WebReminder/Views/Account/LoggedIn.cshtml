@@ -3,9 +3,11 @@
     ViewBag.Title = "LoggedIn";
 }
 
-<h2>LoggedIn</h2>
+<h2>Logged in successfully!</h2>
 
 @Html.ActionLink("Log Off", "Index", "Home", routeValues: null, htmlAttributes: new { id = "logOggLink" })
+
+@Html.ActionLink("Show my tasks", "Index", "Callendar")
 
 @if (Session["UserId"] != null)
 {

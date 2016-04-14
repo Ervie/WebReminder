@@ -13,18 +13,7 @@ namespace WebReminder.Controllers
     {
         // GET: Home
         public ActionResult Index()
-        {
-            String tmpTaskName;
-
-            using (TaskDatabase db = new TaskDatabase())
-            {
-                tmpTaskName = db.testFoo().Name;
-            }
-
-            ViewBag.Title = "Web Reminder - Home Page";
-
-            ViewBag.TaskName = tmpTaskName;
-
+        {            
             return View();
         }
     }

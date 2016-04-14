@@ -114,6 +114,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CallendarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Database\ContextRepository.cs" />
     <Compile Include="Database\DB Operations\TaskDatabase.cs" />
@@ -140,6 +141,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\LoggedIn.cshtml" />
+    <Content Include="Views\Callendar\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

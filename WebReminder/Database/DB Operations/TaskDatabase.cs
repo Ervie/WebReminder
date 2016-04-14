@@ -15,6 +15,11 @@ namespace WebReminder.Database.DB_Operations
 
             return query;
         }
+
+        public List<Task> getUsersTasks(int userId)
+        {
+            return context.Tasks.Where(x => x.Owner.UserID == userId).ToList();
+        }
     }
 
     
