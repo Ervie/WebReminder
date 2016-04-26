@@ -7,8 +7,9 @@
 
 @Html.ActionLink("Log Off", "Index", "Home", routeValues: null, htmlAttributes: new { id = "logOggLink" })
 
-@Html.ActionLink("Show my tasks", "Index", "Callendar")
-
+<div>
+    @Html.ActionLink("Show my tasks", "Index", "Task")
+</div>
 @if (Session["UserId"] != null)
 {
     <h4>Hello @Session["Username"].ToString()</h4>
