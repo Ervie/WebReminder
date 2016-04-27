@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 using WebReminder.Models;
-
+//TESTTESTTEST
 namespace WebReminder.Database
 {
     public class DBInitializer : DropCreateDatabaseIfModelChanges<WR_DBContext>
