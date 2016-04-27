@@ -9,6 +9,7 @@ using WebReminder.Models;
 
 namespace WebReminder.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Home

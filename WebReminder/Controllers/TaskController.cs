@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+
 using WebReminder.Database.DB_Operations;
 using WebReminder.Models;
 
 namespace WebReminder.Controllers
 {
+    [Authorize]
     public class TaskController : Controller
     {
         // GET: Task
@@ -15,11 +18,9 @@ namespace WebReminder.Controllers
         {
             using (TaskDatabase db = new TaskDatabase())
             {
-                int currentUserId;
-
-                Int32.TryParse(Session["UserId"].ToString(), out currentUserId);
+                string currentUserName = HttpContext.User.Identity.Name;
                 
-                return View(db.GetUsersTasks(currentUserId));
+                return View(db.GetUsersTaskByName(currentUserName));
             }
             
         }

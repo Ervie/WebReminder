@@ -5,12 +5,7 @@
 
 <h2>Logged in successfully!</h2>
 
-@Html.ActionLink("Log Off", "Index", "Home", routeValues: null, htmlAttributes: new { id = "logOggLink" })
-
-<div>
-    @Html.ActionLink("Show my tasks", "Index", "Task")
-</div>
-@if (Session["UserId"] != null)
+@if (Session["UserId"] != null && User.Identity.IsAuthenticated)
 {
     <h4>Hello @Session["Username"].ToString()</h4>
 }

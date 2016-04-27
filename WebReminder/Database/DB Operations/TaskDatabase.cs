@@ -16,9 +16,14 @@ namespace WebReminder.Database.DB_Operations
             return returnedTask;
         }
 
-        public List<Task> GetUsersTasks(int userId)
+        public List<Task> GetUsersTasksById(int userId)
         {
             return context.Tasks.Where(x => x.Owner.UserID == userId).ToList();
+        }
+
+        public List<Task> GetUsersTaskByName(string userName)
+        {
+            return context.Tasks.Where(x => x.Owner.Login == userName).ToList();
         }
 
         public void AddTaskToDatabase(Task newTask, int ownerId)

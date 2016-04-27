@@ -1,0 +1,20 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Web Reminder", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Tasks", "Index", "Task", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Log Out", "LogOut", "Account", new { area = "" }, new { @class = "navbar-brand nav navbar-nav navbar-right" })
+            }
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"></ul>
+        </div>
+    </div>
+</div>

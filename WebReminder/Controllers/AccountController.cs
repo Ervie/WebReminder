@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 using WebReminder.Models;
 using WebReminder.Database.DB_Operations;
 
 namespace WebReminder.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         // GET: Account
@@ -38,20 +40,27 @@ namespace WebReminder.Controllers
         }
 
         //GET
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
             using (UserDatabase db = new UserDatabase())
             {
+               
+
                 var validUser = db.LogInUser(user);
 
                 if (validUser != null)
                 {
+                    FormsAuthentication.SetAuthCookie(validUser.Login, true);
+
                     Session["UserId"] = validUser.UserID.ToString();
                     Session["Username"] = validUser.Login.ToString();
                     return RedirectToAction("LoggedIn");
@@ -77,5 +86,12 @@ namespace WebReminder.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            
+            return RedirectToAction("Login", "Account");
+        }
     }
 }
