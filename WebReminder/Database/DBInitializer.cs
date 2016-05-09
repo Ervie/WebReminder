@@ -8,7 +8,7 @@ using WebReminder.Models;
 //TESTTESTTEST
 namespace WebReminder.Database
 {
-    public class DBInitializer : DropCreateDatabaseIfModelChanges<WR_DBContext>
+    public class DBInitializer : DropCreateDatabaseAlways<WR_DBContext>
     {
         protected override void Seed(WR_DBContext context)
         {

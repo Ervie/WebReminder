@@ -20,5 +20,10 @@ namespace WebReminder.Database.DB_Operations
         {
             return context.Users.Where(u => u.Login == user.Login && u.Password == user.Password).FirstOrDefault();        
         }
+
+        public bool CheckIfUserExistByLogin(string userName)
+        {
+            return !context.Users.Any(x => x.Login == userName);
+        }
     }
 }

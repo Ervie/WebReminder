@@ -15,6 +15,7 @@ namespace WebReminder.Models
 
         [Required(ErrorMessage="Login in required")]
         [MaxLength(32, ErrorMessage="You can only add up to 32 characters")]
+        [Index("TitleIndex", IsUnique = true)]
         public string Login { get; set; }
 
         [Required(ErrorMessage = "Password in required")]
@@ -32,6 +33,7 @@ namespace WebReminder.Models
         [Required(ErrorMessage = "Email in required")]
         [MaxLength(64, ErrorMessage="You can only add up to 64 characters")]
         [EmailAddress(ErrorMessage="We don't recognize it as valid email address")]
+
         public string Email {get; set;}
 
         [MaxLength(16, ErrorMessage="You can only add up to 16 characters")]

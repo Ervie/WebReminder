@@ -13,16 +13,17 @@ namespace WebReminder.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskID { get; set; }
 
-        [MaxLength(64), Required]
+        [Required(ErrorMessage = "You must name your new task")]
+        [MaxLength(64, ErrorMessage = "Task name must include from 1 to 64 characters")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Date is required")]
         public DateTime DateTime { get; set; }
 
-        [MaxLength(256)]
+        [MaxLength(256, ErrorMessage = "Max length of description is 256 characters")]
         public string Description { get; set; }
 
-        [MaxLength(64)]
+        [MaxLength(64, ErrorMessage = "Max length of description is 64 characters")]
         public string Place { get; set; }
 
         public virtual User Owner { get; set; }

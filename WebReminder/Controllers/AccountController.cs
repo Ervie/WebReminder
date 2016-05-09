@@ -19,12 +19,14 @@ namespace WebReminder.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(User user)
         {
             if (ModelState.IsValid)
@@ -92,6 +94,13 @@ namespace WebReminder.Controllers
             FormsAuthentication.SignOut();
             
             return RedirectToAction("Login", "Account");
+        }
+
+        public JsonResult CheckIfUserExists(string UserName)
+        {
+            //check if any of the UserName matches the UserName specified in the Parameter using the ANY extension method. 
+            using (UserDatabase db = new UserDatabase()) 
+                return Json(!db.CheckIfUserExistByLogin(UserName), JsonRequestBehavior.AllowGet);
         }
     }
 }
